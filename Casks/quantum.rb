@@ -14,7 +14,7 @@ cask "quantum" do
 
   auto_updates true
   depends_on arch: :arm64
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "Voxelite.app"
   binary "#{appdir}/Voxelite.app/Contents/MacOS/voxelite-mcp", target: "quantum-mcp"
