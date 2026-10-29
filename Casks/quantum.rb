@@ -1,8 +1,8 @@
 cask "quantum" do
-  version "0.3.1"
-  sha256 "0a95ec18f4e590f1b9a83cc2a475e32e98c0a9eda3fe5bbe0107b03dd1be2c32"
+  version "0.4.0"
+  sha256 "2a1584c667873c3697b8d78395563398a81b84d9a871d7b18565556b27d42750"
 
-  url "https://github.com/0x63616c/quantum/releases/download/v#{version}/Voxelite.dmg"
+  url "https://github.com/0x63616c/quantum/releases/download/v#{version}/Quantum.dmg"
   name "Quantum"
   desc "3D voxel editor for people and agents"
   homepage "https://quantum.worldwidewebb.co/"
@@ -16,8 +16,8 @@ cask "quantum" do
   depends_on arch: :arm64
   depends_on macos: :ventura
 
-  app "Voxelite.app"
-  binary "#{appdir}/Voxelite.app/Contents/MacOS/voxelite-mcp", target: "quantum-mcp"
+  app "Quantum.app"
+  binary "#{appdir}/Quantum.app/Contents/MacOS/quantum-mcp"
 
   zap trash: [
     "~/Library/Application Support/co.worldwidewebb.quantum",
