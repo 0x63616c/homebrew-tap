@@ -1,6 +1,6 @@
 cask "quantum" do
-  version "0.4.0"
-  sha256 "2a1584c667873c3697b8d78395563398a81b84d9a871d7b18565556b27d42750"
+  version "0.4.1"
+  sha256 "372a5dc5fc8b0c444ce511ac7ea5dab7d904b00652eb6764e31acd84b20b48c1"
 
   url "https://github.com/0x63616c/quantum/releases/download/v#{version}/Quantum.dmg"
   name "Quantum"
