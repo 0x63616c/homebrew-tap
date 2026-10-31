@@ -1,0 +1,26 @@
+#!/bin/sh
+# Point Formula/runner-pool.rb at a runner-pool release.
+#   script/bump-runner-pool v0.2.0
+# Reads the release's published .tar.gz.sha256 (needs `gh` logged in; the repo
+# is private), rewrites url/version/sha256, and checks the result parses.
+set -eu
+tag=${1:?usage: script/bump-runner-pool vX.Y.Z}
+case "$tag" in v[0-9]*.[0-9]*.[0-9]*) ;; *) echo "tag must look like vX.Y.Z" >&2; exit 1 ;; esac
+version=${tag#v}
+asset=runner-pool-aarch64-apple-darwin.tar.gz
+dir=$(mktemp -d)
+trap 'rm -rf "$dir"' 0
+gh release download "$tag" -R 0x63616c/runner-pool -p "$asset.sha256" -D "$dir"
+line=$(cat "$dir/$asset.sha256")
+sha=${line%%  *}
+[ "$line" = "$sha  $asset" ] && [ "${#sha}" -eq 64 ] || { echo "bad checksum file: $line" >&2; exit 1; }
+case "$sha" in *[!0-9a-f]*) echo "bad sha256" >&2; exit 1 ;; esac
+f=$(dirname "$0")/../Formula/runner-pool.rb
+sed -i.bak \
+  -e "s|releases/download/v[^/]*/|releases/download/$tag/|" \
+  -e "s|^  version \".*\"|  version \"$version\"|" \
+  -e "s|^  sha256 \".*\"|  sha256 \"$sha\"|" "$f"
+rm -f "$f.bak"
+grep -n "releases/download\|^  version\|^  sha256" "$f"
+if command -v ruby >/dev/null 2>&1; then ruby -c "$f" >/dev/null; fi
+echo "updated runner-pool to $version; commit with: git commit -am 'runner-pool $version'"

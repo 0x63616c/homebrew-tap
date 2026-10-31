@@ -1,6 +1,6 @@
 # 0x63616c/homebrew-tap
 
-Homebrew casks for apps by [@0x63616c](https://github.com/0x63616c).
+Homebrew casks and formulae for apps by [@0x63616c](https://github.com/0x63616c).
 
 ## Quantum
 
@@ -31,3 +31,23 @@ brew uninstall --cask --zap quantum   # also removes settings, caches and prefer
 `--zap` never touches your projects in `~/Documents/Quantum`.
 
 The cask is updated automatically by Quantum's release workflow after each release.
+
+## runner-pool
+
+[runner-pool](https://github.com/0x63616c/runner-pool) turns an Apple silicon Mac into an
+isolated, reversible CI runner pool (Tart macOS VMs and a Lima Linux VM under a
+dedicated non-admin user). The CLI installs as both `runner-pool` and `rp`.
+
+```sh
+brew install 0x63616c/tap/runner-pool
+sudo rp setup --dry-run   # preview
+sudo rp setup             # set up this Mac (asks once)
+rp status
+```
+
+The source repository is private for now, so Homebrew downloads the release with your
+GitHub login: run `gh auth login` first, or set `HOMEBREW_GITHUB_API_TOKEN`.
+
+Upgrade with `brew upgrade runner-pool`. LaunchDaemons point at Homebrew's stable
+`opt/runner-pool` path, so they pick up the new binary on their next run. Maintainers
+bump the formula with `script/bump-runner-pool vX.Y.Z`.
