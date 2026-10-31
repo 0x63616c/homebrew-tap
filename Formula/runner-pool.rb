@@ -6,10 +6,10 @@ require_relative "../lib/github_private_release_download_strategy"
 class RunnerPool < Formula
   desc "Isolated, reversible CI runner and Codex pool for Apple silicon Macs"
   homepage "https://github.com/0x63616c/runner-pool"
-  url "https://github.com/0x63616c/runner-pool/releases/download/v0.2.0/runner-pool-aarch64-apple-darwin.tar.gz",
+  url "https://github.com/0x63616c/runner-pool/releases/download/v0.3.0/runner-pool-aarch64-apple-darwin.tar.gz",
       using: GitHubPrivateReleaseDownloadStrategy
-  version "0.2.0"
-  sha256 "b030751c8cae5eacb4c5de7c3365ce472a41faa1847d34769b227764d1406a3a"
+  version "0.3.0"
+  sha256 "7a4162ef7a2f411174e2479d8051ab8c310f5c6f5c1dcc37d9fa937e163a59c8"
   license "MIT"
 
   livecheck do
