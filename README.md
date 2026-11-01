@@ -45,9 +45,19 @@ sudo rp setup             # set up this Mac (asks once)
 rp status
 ```
 
-The source repository is private for now, so Homebrew downloads the release with your
-GitHub login: run `gh auth login` first, or set `HOMEBREW_GITHUB_API_TOKEN`.
+The source repository and release assets are public.
 
 Upgrade with `brew upgrade runner-pool`. LaunchDaemons point at Homebrew's stable
-`opt/runner-pool` path, so they pick up the new binary on their next run. Maintainers
-bump the formula with `script/bump-runner-pool vX.Y.Z`.
+`opt/runner-pool` path, so they pick up the new binary on their next run. The formula
+is bumped automatically by the `bump-runner-pool.yml` workflow, which checks for
+stable releases every 15 minutes and accepts `runner-pool-release` repository
+dispatch events with `client_payload.tag`. It verifies the release tarball's
+checksum before committing and pushing the update to `main`.
+
+To trigger a bump by hand (omit `-f tag=...` to use the latest stable release):
+
+```sh
+gh workflow run bump-runner-pool.yml -R 0x63616c/homebrew-tap -f tag=vX.Y.Z
+```
+
+For a local update, run `script/bump-runner-pool vX.Y.Z`.
