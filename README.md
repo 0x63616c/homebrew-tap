@@ -45,7 +45,8 @@ brew install --cask 0x63616c/tap/callkeep
 Or run `brew tap 0x63616c/tap` once, then `brew install --cask callkeep`.
 Update with `brew upgrade --cask callkeep`.
 
-Releases are ad-hoc signed and not notarized. macOS may require approval in
+Releases from Build 4 (1.0.4) onward are signed with Developer ID and notarized by Apple.
+Earlier releases were ad-hoc signed and may require approval in
 **System Settings → Privacy & Security** before opening the app.
 The cask is updated automatically after successful builds on Callkeep’s `main`.
 `brew uninstall --cask callkeep` removes the app. `--zap` also removes preferences,
