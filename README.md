@@ -31,3 +31,22 @@ brew uninstall --cask --zap quantum   # also removes settings, caches and prefer
 `--zap` never touches your projects in `~/Documents/Quantum`.
 
 The cask is updated automatically by Quantum's release workflow after each release.
+
+## Callkeep
+
+[Callkeep](https://github.com/0x63616c/callkeep) is a native macOS recorder for your
+microphone and computer audio, with optional iCloud Drive storage. Requires macOS
+15 or later; supports Apple silicon and Intel.
+
+```sh
+brew install --cask 0x63616c/tap/callkeep
+```
+
+Or run `brew tap 0x63616c/tap` once, then `brew install --cask callkeep`.
+Update with `brew upgrade --cask callkeep`.
+
+Releases are ad-hoc signed and not notarized. macOS may require approval in
+**System Settings → Privacy & Security** before opening the app.
+The cask is updated automatically after successful builds on Callkeep’s `main`.
+`brew uninstall --cask callkeep` removes the app. `--zap` also removes preferences,
+but preserves recordings on this Mac and in iCloud Drive.
