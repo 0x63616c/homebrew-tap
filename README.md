@@ -64,7 +64,8 @@ homelab
 ```
 
 The formula builds only the operator command from a pinned source commit using
-Rust and its committed dependency lockfile. It does not install Nix, activate a
+Rust and its committed dependency lockfile. It also installs age and SOPS for
+guided local credential preparation. It does not install Nix, activate a
 host, or register background services. No private source or release assets are
 published in this tap. The source is downloaded to Homebrew's local build/cache
 locations for the authorized user.
@@ -74,4 +75,6 @@ For private Git downloads, follow Homebrew's
 The formula contains no tokens and does not change your authentication setup.
 
 Update with `brew upgrade homelab` after a reviewed formula update. Uninstall
-with `brew uninstall homelab`; your local connection profiles are retained.
+with `brew uninstall homelab`; your local connection profiles and private
+provisioning files are retained. Keep recovery backups before removing those
+files yourself.
