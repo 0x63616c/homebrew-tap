@@ -2,8 +2,8 @@ class Homelab < Formula
   desc "Terminal client for reviewed remote macOS setup and inspection"
   homepage "https://github.com/0x63616c/homelab"
   url "https://github.com/0x63616c/homelab.git",
-      revision: "468f7557ac9e53547fb4e9699cbdf3c15bbe6e01"
-  version "0.1.0"
+      revision: "2e8e95f5b01df3d6b323b124e5aa8ab68e979b76"
+  version "0.1.1"
 
   depends_on "rust" => :build
   depends_on arch: :arm64
@@ -24,6 +24,7 @@ class Homelab < Formula
   end
 
   test do
+    assert_match "homelab #{version}", shell_output("#{bin}/homelab --version")
     assert_match "Guided remote homelab management", shell_output("#{bin}/homelab --help")
     output = shell_output("#{bin}/homelab --inventory #{testpath}/missing.json inspect --host example --json", 1)
     assert_equal "inventory-missing", JSON.parse(output).fetch("code")
