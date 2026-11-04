@@ -54,27 +54,22 @@ but preserves recordings on this Mac and in iCloud Drive.
 
 ## Homelab
 
-Homelab is a terminal client for reviewed remote macOS setup and inspection
-(Apple silicon). Its source repository is private: installation requires access
-to `0x63616c/homelab` and an existing authenticated GitHub CLI credential helper.
+[Homelab](https://github.com/0x63616c/homelab-cli) is a guided terminal client
+for macOS homelabs (Apple silicon).
 
 ```sh
 brew install 0x63616c/tap/homelab
 homelab
 ```
 
-The formula builds only the operator command from a pinned source commit using
-Rust and its committed dependency lockfile. It also installs age and SOPS for
-guided local credential preparation. It does not install Nix, activate a
-host, or register background services. No private source or release assets are
-published in this tap. The source is downloaded to Homebrew's local build/cache
-locations for the authorized user.
+The formula installs a checksummed public release containing the CLI and matching
+bootstrap helper. No private repository access, Rust build or Nix installation
+is needed to install the tool. It also installs age, SOPS and GitHub CLI.
 
-For private Git downloads, follow Homebrew's
-[authentication guidance](https://docs.brew.sh/FAQ#how-do-i-authenticate-private-git-source-downloads).
-The formula contains no tokens and does not change your authentication setup.
+Your configuration repository stays private. Attach it once in the wizard using
+your GitHub CLI login. Optional 1Password integration runs only on your laptop.
+Nothing deploys until you review and explicitly approve target setup.
 
-Update with `brew upgrade homelab` after a reviewed formula update. Uninstall
-with `brew uninstall homelab`; your local connection profiles and private
-provisioning files are retained. Keep recovery backups before removing those
-files yourself.
+Update with `brew update` then `brew upgrade 0x63616c/tap/homelab`.
+Uninstalling retains local profiles and private preparation files; preserve
+recovery backups before removing those separately.
