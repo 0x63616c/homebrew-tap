@@ -1,6 +1,6 @@
 cask "callkeep" do
-  version "1.0.18"
-  sha256 "2bba7bfaae6436a49989f9dd3b623a704e5ce2d6c9f7ec39bb7019e8fe4f3124"
+  version "1.0.19"
+  sha256 "26d7db44427d3fbc379103e6169348e7cb5523176f267d5a0427630544c7aea0"
 
   url "https://github.com/0x63616c/callkeep/releases/download/v#{version}/Callkeep-#{version}.zip"
   name "Callkeep"
