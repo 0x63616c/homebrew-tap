@@ -51,3 +51,27 @@ Earlier releases were ad-hoc signed and may require approval in
 The cask is updated automatically after successful builds on Callkeep’s `main`.
 `brew uninstall --cask callkeep` removes the app. `--zap` also removes preferences,
 but preserves recordings on this Mac and in iCloud Drive.
+
+## Homelab
+
+Homelab is a terminal client for reviewed remote macOS setup and inspection
+(Apple silicon). Its source repository is private: installation requires access
+to `0x63616c/homelab` and an existing authenticated GitHub CLI credential helper.
+
+```sh
+brew install 0x63616c/tap/homelab
+homelab
+```
+
+The formula builds only the operator command from a pinned source commit using
+Rust and its committed dependency lockfile. It does not install Nix, activate a
+host, or register background services. No private source or release assets are
+published in this tap. The source is downloaded to Homebrew's local build/cache
+locations for the authorized user.
+
+For private Git downloads, follow Homebrew's
+[authentication guidance](https://docs.brew.sh/FAQ#how-do-i-authenticate-private-git-source-downloads).
+The formula contains no tokens and does not change your authentication setup.
+
+Update with `brew upgrade homelab` after a reviewed formula update. Uninstall
+with `brew uninstall homelab`; your local connection profiles are retained.

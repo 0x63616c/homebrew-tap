@@ -1,0 +1,31 @@
+class Homelab < Formula
+  desc "Terminal client for reviewed remote macOS setup and inspection"
+  homepage "https://github.com/0x63616c/homelab"
+  url "https://github.com/0x63616c/homelab.git",
+      revision: "468f7557ac9e53547fb4e9699cbdf3c15bbe6e01"
+  version "0.1.0"
+
+  depends_on "rust" => :build
+  depends_on arch: :arm64
+  depends_on :macos
+
+  deny_network_access!
+
+  def fetch
+    cd "client" do
+      system "cargo", "fetch", *std_cargo_fetch_args
+    end
+  end
+
+  def install
+    cd "client" do
+      system "cargo", "install", *std_cargo_args, "--bin", "homelab"
+    end
+  end
+
+  test do
+    assert_match "Guided remote homelab management", shell_output("#{bin}/homelab --help")
+    output = shell_output("#{bin}/homelab --inventory #{testpath}/missing.json inspect --host example --json", 1)
+    assert_equal "inventory-missing", JSON.parse(output).fetch("code")
+  end
+end
