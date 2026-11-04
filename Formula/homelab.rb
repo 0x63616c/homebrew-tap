@@ -2,8 +2,8 @@ class Homelab < Formula
   desc "Terminal client for reviewed remote macOS setup and inspection"
   homepage "https://github.com/0x63616c/homelab"
   url "https://github.com/0x63616c/homelab.git",
-      revision: "2e8e95f5b01df3d6b323b124e5aa8ab68e979b76"
-  version "0.1.1"
+      revision: "930c0752ca9584de5feed17d8ffc4c3c55917e94"
+  version "0.1.2"
 
   depends_on "rust" => :build
   depends_on arch: :arm64
