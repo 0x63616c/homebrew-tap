@@ -1,8 +1,8 @@
 class Homelab < Formula
   desc "Terminal client for reviewed remote macOS setup and inspection"
   homepage "https://github.com/0x63616c/homelab-cli"
-  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.2.0/homelab-aarch64-apple-darwin.tar.gz"
-  sha256 "9d4db97d7a4e220025b4e1a1eb899901e06825c43376692bcf5d643fc6c485e7"
+  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.2.1/homelab-aarch64-apple-darwin.tar.gz"
+  sha256 "4df63afb2147317f107d85f4d0af2aef962811d8eb08c07949307abaad3be380"
 
   depends_on "age"
   depends_on arch: :arm64
