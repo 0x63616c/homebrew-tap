@@ -4,6 +4,7 @@ class Homelab < Formula
   url "https://github.com/0x63616c/homelab-cli/releases/download/v0.4.0/homelab-aarch64-apple-darwin.tar.gz"
   sha256 "d7dd9aa5c2411b39f702a340ff5038d55e335748aba9fe7ee057817a95946cbf"
   license "MIT"
+  revision 1
 
   depends_on "age"
   depends_on arch: :arm64
@@ -15,10 +16,12 @@ class Homelab < Formula
 
   def install
     bin.install "homelab", "homelab-host"
+    bin.install_symlink "homelab" => "hl"
   end
 
   test do
     assert_match "homelab #{version}", shell_output("#{bin}/homelab --version")
+    assert_match "homelab #{version}", shell_output("#{bin}/hl --version")
     assert_match "homelab-host #{version}", shell_output("#{bin}/homelab-host --version")
     assert_match "Set up a Mac from your Git configuration", shell_output("#{bin}/homelab --help")
     output = shell_output("#{bin}/homelab setup --host example 2>&1", 2)
