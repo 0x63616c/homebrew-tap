@@ -1,8 +1,9 @@
 class Homelab < Formula
-  desc "Terminal client for reviewed remote macOS setup and inspection"
+  desc "Guided Mac setup from your Git configuration"
   homepage "https://github.com/0x63616c/homelab-cli"
-  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.2.1/homelab-aarch64-apple-darwin.tar.gz"
-  sha256 "4df63afb2147317f107d85f4d0af2aef962811d8eb08c07949307abaad3be380"
+  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.3.0/homelab-aarch64-apple-darwin.tar.gz"
+  sha256 "316255f3c7c2dceab01c1f12999a1b8aa03cfb09f609ef5a59289ad5a0a843e4"
+  license "MIT"
 
   depends_on "age"
   depends_on arch: :arm64
@@ -19,8 +20,8 @@ class Homelab < Formula
   test do
     assert_match "homelab #{version}", shell_output("#{bin}/homelab --version")
     assert_match "homelab-host #{version}", shell_output("#{bin}/homelab-host --version")
-    assert_match "Guided remote homelab management", shell_output("#{bin}/homelab --help")
-    output = shell_output("#{bin}/homelab --inventory #{testpath}/missing.json inspect --host example --json", 1)
-    assert_equal "inventory-missing", JSON.parse(output).fetch("code")
+    assert_match "Set up a Mac from your Git configuration", shell_output("#{bin}/homelab --help")
+    output = shell_output("#{bin}/homelab setup --host example 2>&1", 2)
+    assert_match "Setup needs an interactive terminal", output
   end
 end
