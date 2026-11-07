@@ -1,10 +1,9 @@
 class Homelab < Formula
   desc "Guided Mac setup from your Git configuration"
   homepage "https://github.com/0x63616c/homelab-cli"
-  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.4.0/homelab-aarch64-apple-darwin.tar.gz"
-  sha256 "d7dd9aa5c2411b39f702a340ff5038d55e335748aba9fe7ee057817a95946cbf"
+  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.4.1/homelab-aarch64-apple-darwin.tar.gz"
+  sha256 "7e694795e8ad438ace32a550424919b826b620b7f7d655a2f5d7fda0a0a674d1"
   license "MIT"
-  revision 1
 
   depends_on "age"
   depends_on arch: :arm64
