@@ -34,7 +34,7 @@ The cask is updated automatically by Quantum's release workflow after each relea
 
 ## Callkeep
 
-[Callkeep](https://github.com/0x63616c/callkeep) is a native macOS recorder for your
+[Callkeep](https://github.com/0x63616c/world-wide-webb/tree/main/apps/callkeep) is a native macOS recorder for your
 microphone and computer audio, with optional iCloud Drive storage. Requires macOS
 15 or later; supports Apple silicon and Intel.
 
@@ -43,18 +43,19 @@ brew install --cask 0x63616c/tap/callkeep
 ```
 
 Or run `brew tap 0x63616c/tap` once, then `brew install --cask callkeep`.
-Update with `brew upgrade --cask callkeep`.
+Update with `brew upgrade --cask --greedy callkeep`.
 
 Releases from Build 4 (1.0.4) onward are signed with Developer ID and notarized by Apple.
 Earlier releases were ad-hoc signed and may require approval in
 **System Settings → Privacy & Security** before opening the app.
-The cask is updated automatically after successful builds on Callkeep’s `main`.
+The cask is updated automatically after successful Callkeep delivery from
+`world-wide-webb/main`.
 `brew uninstall --cask callkeep` removes the app. `--zap` also removes preferences,
 but preserves recordings on this Mac and in iCloud Drive.
 
 ## Homelab
 
-[Homelab](https://github.com/0x63616c/homelab-cli) is a guided terminal client
+[Homelab](https://github.com/0x63616c/world-wide-webb/tree/main/homelab/cli) is a guided terminal client
 for macOS homelabs (Apple silicon).
 
 ```sh
@@ -73,3 +74,8 @@ Nothing deploys until you review and explicitly approve target setup.
 Update with `brew update` then `brew upgrade 0x63616c/tap/homelab`.
 Uninstalling retains local profiles and private preparation files; preserve
 recovery backups before removing those separately.
+
+Callkeep and Homelab downloads are public GitHub release assets from
+[`world-wide-webb`](https://github.com/0x63616c/world-wide-webb/releases), with
+product-specific tags and checksums in their recipes. GitHub login is not required
+to download either tool. Configuration access still uses your own GitHub login.
