@@ -67,9 +67,9 @@ The formula installs a checksummed public release containing the CLI and matchin
 bootstrap helper. No private repository access, Rust build or Nix installation
 is needed to install the tool. It also installs age, SOPS and GitHub CLI.
 
-Your configuration repository stays private. Attach it once in the wizard using
-your GitHub CLI login. Optional 1Password integration runs only on your laptop.
-Nothing deploys until you review and explicitly approve target setup.
+Attach your configuration repository in the wizard using your GitHub CLI login.
+Setup requires the 1Password CLI on your laptop. Nothing deploys until you review
+and explicitly approve target setup.
 
 Update with `brew update` then `brew upgrade 0x63616c/tap/homelab`.
 Uninstalling retains local profiles and private preparation files; preserve
