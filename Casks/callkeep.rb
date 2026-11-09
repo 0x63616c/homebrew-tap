@@ -1,16 +1,16 @@
 cask "callkeep" do
-  version "1.0.25"
-  sha256 "d4ff11c4e1fedde4493480956af4e99d01a3357e08779b7215c7fb60a905c9c8"
+  version "1.0.26"
+  sha256 "87e06b44d5a75142d614a17ff83f45382e9461f5d34667826355ac5da596c4db"
 
-  url "https://github.com/0x63616c/callkeep/releases/download/v#{version}/Callkeep-#{version}.zip"
+  url "https://github.com/0x63616c/world-wide-webb/releases/download/callkeep%2Fv#{version}/Callkeep-#{version}.zip"
   name "Callkeep"
   desc "Record microphone and computer audio with optional iCloud Drive storage"
-  homepage "https://github.com/0x63616c/callkeep"
-  auto_updates true
+  homepage "https://github.com/0x63616c/world-wide-webb"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    url "https://github.com/0x63616c/world-wide-webb/releases"
+    regex(%r{/releases/tag/callkeep(?:%2F|/)v?(\d+(?:\.\d+)+)}i)
+    strategy :page_match
   end
 
   depends_on macos: :sequoia
