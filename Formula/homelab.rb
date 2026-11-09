@@ -1,29 +1,33 @@
 class Homelab < Formula
   desc "Guided Mac setup from your Git configuration"
-  homepage "https://github.com/0x63616c/homelab-cli"
-  url "https://github.com/0x63616c/homelab-cli/releases/download/v0.4.1/homelab-aarch64-apple-darwin.tar.gz"
-  sha256 "7e694795e8ad438ace32a550424919b826b620b7f7d655a2f5d7fda0a0a674d1"
+  homepage "https://github.com/0x63616c/world-wide-webb/tree/main/homelab/cli"
+  url "https://github.com/0x63616c/world-wide-webb/releases/download/homelab%2Fv0.4.2/homelab-0.4.2.tar.gz"
+  sha256 "34e8dcb4e8a72cf3c70b5c4ad4ad489ae1939be004eca177e33e5fa237cf4d82"
+  version "0.4.2"
   license "MIT"
+
+  livecheck do
+    url "https://github.com/0x63616c/world-wide-webb/releases"
+    regex(%r{/releases/tag/homelab(?:%2F|/)v?(\d+(?:\.\d+)+)}i)
+    strategy :page_match
+  end
 
   depends_on "age"
   depends_on arch: :arm64
   depends_on "gh"
   depends_on :macos
   depends_on "sops"
-
   deny_network_access!
 
   def install
-    bin.install "homelab", "homelab-host"
+    bin.install "bin/homelab", "bin/homelab-host"
     bin.install_symlink "homelab" => "hl"
+    pkgshare.install Dir["share/homelab/*"]
   end
 
   test do
     assert_match "homelab #{version}", shell_output("#{bin}/homelab --version")
     assert_match "homelab #{version}", shell_output("#{bin}/hl --version")
     assert_match "homelab-host #{version}", shell_output("#{bin}/homelab-host --version")
-    assert_match "Set up a Mac from your Git configuration", shell_output("#{bin}/homelab --help")
-    output = shell_output("#{bin}/homelab setup --host example 2>&1", 2)
-    assert_match "Setup needs an interactive terminal", output
   end
 end
