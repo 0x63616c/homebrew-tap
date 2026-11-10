@@ -1,9 +1,9 @@
 class Homelab < Formula
   desc "Guided Mac setup from your Git configuration"
   homepage "https://github.com/0x63616c/world-wide-webb/tree/main/homelab/cli"
-  url "https://github.com/0x63616c/world-wide-webb/releases/download/homelab%2Fv0.4.2/homelab-0.4.2.tar.gz"
-  sha256 "34e8dcb4e8a72cf3c70b5c4ad4ad489ae1939be004eca177e33e5fa237cf4d82"
-  version "0.4.2"
+  url "https://github.com/0x63616c/world-wide-webb/releases/download/homelab%2Fv0.4.3/homelab-0.4.3.tar.gz"
+  sha256 "521e10ba073183e660d67c95a4b74f48cc4bba897c84b97c38dec9a437b9ea02"
+  version "0.4.3"
   license "MIT"
 
   livecheck do
